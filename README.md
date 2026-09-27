@@ -1,2 +1,2 @@
-# student_ ai _projecy
+# student_ ai _project
 Beginner project
