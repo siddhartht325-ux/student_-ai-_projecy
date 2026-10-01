@@ -1,17 +1,32 @@
-import os
-from dotenv import load_dotenv
-from google import genai
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-load_dotenv()
+model_name = "google/flan-t5-small"
 
-client = genai.Client()
+print("Model loading...")
 
-user_prompt = input("Enter your prompt: ")
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 
-response = client.models.generate_content(
-    model="gemini-3.5-flash-lite",
-    contents=user_prompt
-)
+print("Model loaded successfully!")
+print("Chatbot ready! Type 'exit' to stop.\n")
 
-print("\nAI Response:")
-print(response.text)
+while True:
+    question = input("You: ")
+
+    if question.lower() == "exit":
+        print("Goodbye!")
+        break
+
+    inputs = tokenizer(question, return_tensors="pt")
+
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=100
+    )
+
+    answer = tokenizer.decode(
+        outputs[0],
+        skip_special_tokens=True
+    )
+
+    print("AI:", answer)
