@@ -1,2 +1,3 @@
-# student_ ai _project
-Beginner project
+# HUGGING FACE GENRATOR
+
+Beginner project 
