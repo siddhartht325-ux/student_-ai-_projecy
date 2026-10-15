@@ -1,3 +1,3 @@
-# HUGGING FACE GENRATOR
+# AI PROJECTS 
 
 Beginner project 
