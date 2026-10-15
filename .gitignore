@@ -1,3 +1,8 @@
+# Environment variables containing secret API keys
 .env
+
+# Python virtual environment folder
 venv/
-_pycache_/
+
+# Python cache folders
+__pycache__/
